@@ -1,6 +1,66 @@
 <div class="table-container">
   <mat-toolbar color="primary" class="welcome-message">
-    <h3>Bienvenido, usuario</h3>
-    <button mat-stroked-button>Salir</button>
+    <h3>Bienvenido, {{ this.userName }}</h3>
+    <a
+      href="#"
+      routerLink="/login"
+      routerLinkActive="active"
+      class="toolbar--menu--text">
+      <button mat-stroked-button (click)="exitSession()">Salir</button>
+    </a>
   </mat-toolbar>
+  <mat-card class="user-card">
+    <div class="user-info">
+      <h2 class="user-name">{{ this.dataName }}</h2>
+      <div class="user-data">
+        <p class="user-nickname">Username:</p>
+        <p>{{ this.userName }}</p>
+        <p class="user-age">Age:</p>
+        <p>{{ this.dataAge }}</p>
+        <p class="user-email">Email:</p>
+        <p>{{ this.dataEmail }}</p>
+      </div>
+    </div>
+    <div class="user-bio">
+      <p>About</p>
+      <p>{{ this.dataAbout }}</p>
+    </div>
+  </mat-card>
+  <div class="filter-buttons">
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      aria-label="Font Style">
+      <mat-button-toggle value="this-month">This month</mat-button-toggle>
+      <mat-button-toggle value="this-year">This year</mat-button-toggle>
+      <mat-button-toggle value="all">All</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>  
+  <mat-list class="comment-list">
+    <h1>Comments</h1>
+    <div *ngFor="let comment of this.arrayComments">
+      <mat-list-item class="comment-item" role="listitem">
+        <h3 class="comment-title">
+          {{ comment.title }}
+        </h3>
+      </mat-list-item>
+      <mat-list-item>
+        <p>
+          {{ comment.text }}   
+        </p> 
+      </mat-list-item>
+      <mat-list-item>
+        <small class="comment-date">
+          {{ comment.commented }}
+        </small>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+  <!-- <mat-paginator
+    #paginator
+    [length]="commentsSize"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+  </mat-paginator> -->
 </div>

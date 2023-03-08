@@ -3,14 +3,14 @@
     <h2>Login</h2>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Username</mat-label>
-      <input matInput />
+      <input matInput #usernameInput />
     </mat-form-field>
     <a
       href="#"
-      routerLink="/main"
+      routerLink="/login"
       routerLinkActive="active"
       class="toolbar--menu--text">
-      <button mat-raised-button color="primary">Login</button>
+      <button mat-raised-button color="primary" (click)="submitUsername(usernameInput.value)">Login</button>
     </a>
   </form>
 </mat-card>
